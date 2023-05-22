@@ -7,7 +7,7 @@
 2. Main Screen: 
     - User location weather
     - Last searched city weather
-3. City Weather Details
+3. City Weather Details Modal
     - Shows full weather details of a city
 
 
