@@ -44,15 +44,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
             
         }
         
-//        if let lat = city.value(forKey: "lat") as? Double, let lon = city.value(forKey: "lon") as? Double {
-//            self.fetch(coordinates: (lat: lat, lon: lon), completion: { cityWeather in
-//                if let cityWeather = cityWeather {
-//                    cell.setWeatherData(with: cityWeather)
-//                    collectionView.reloadData()
-//                }
-//            })
-//        }
-        
         return cell
     }
     
