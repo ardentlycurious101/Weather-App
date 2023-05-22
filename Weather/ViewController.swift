@@ -153,6 +153,17 @@ class ViewController: UIViewController {
         ])
     }
     
+    func userLocationUpdated(userCoordinates: (lat: Double, lon: Double)?) {
+        if let coord = userCoordinates {
+            self.fetch(coordinates: (coord.lat, coord.lon)) { weatherData in
+                // Update first section of collection view with user location's weather
+                if let weatherData = weatherData {
+                    self.userCurrentCityWeatherData = [weatherData]
+                    DispatchQueue.main.async {
+                        self.citiesWeatherView.reloadData()
+                    }
+                }
+            }
         }
     }
     
