@@ -56,6 +56,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         return cell
     }
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return numberOfSections
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let horizontalPadding: CGFloat = 20
