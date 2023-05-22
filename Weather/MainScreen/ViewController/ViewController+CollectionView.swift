@@ -12,7 +12,16 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case MainScreenSection.userLocation.rawValue:
-            return 1
+            if let authorizationStatus = self.coreLocationManager?.authorizationStatus {
+                switch authorizationStatus {
+                case .authorizedAlways, .authorizedWhenInUse:
+                    return 1
+                default:
+                    return userCurrentCityWeatherData.count
+                }
+            }
+            
+            return userCurrentCityWeatherData.count
         default:
             return cityHistory.count
         }

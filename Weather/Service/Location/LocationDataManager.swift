@@ -64,4 +64,8 @@ class LocationDataManager: NSObject, CLLocationManagerDelegate, ObservableObject
         // handle error
     }
     
+    var authorizationStatus: CLAuthorizationStatus {
+        return locationManager.authorizationStatus
+    }
+    
 }
