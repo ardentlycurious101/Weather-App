@@ -29,12 +29,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let row = searchBarResults[indexPath.row]
         
         // Show data in modal
-        self.showData(for: row)
-        
-        // Cache data and update collection view
-        if let coordinates = row.coordinates {
-            self.saveCity(name: row.fullName, coord: coordinates)
-            self.citiesWeatherView.reloadData()
+        self.showDataInModal(for: row) {
+            // Cache data and update collection view after new weather data is fetched
+            if let coordinates = row.coordinates {
+                self.saveLastSearchedCity(name: row.fullName, coord: coordinates)
+                self.citiesWeatherView.reloadData()
+            }
         }
     }
     
