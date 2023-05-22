@@ -153,6 +153,8 @@ class ViewController: UIViewController {
         ])
     }
     
+    // This implementation assumes that we only attain user location once, when the app is launched.
+    // Not implemented: Ideally, we also obtain user location when the app enters foreground from background, to cover the case where user moves to a different city while app is in background (i.e. after a flight)
     func userLocationUpdated(userCoordinates: (lat: Double, lon: Double)?) {
         if let coord = userCoordinates {
             self.fetch(coordinates: (coord.lat, coord.lon)) { weatherData in
