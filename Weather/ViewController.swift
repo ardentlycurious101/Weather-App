@@ -7,8 +7,13 @@
 
 import UIKit
 import CoreData
+import CoreLocation
+
 
 class ViewController: UIViewController {
+    
+    // Business Logic
+    var coreLocationManager: LocationDataManager?
     
     // Networking
     let fetchWeatherInteractor = FetchCityWeatherInteractor()
@@ -92,6 +97,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.coreLocationManager = LocationDataManager(locationUpdated: self.userLocationUpdated)
         
         self.setupViews()
     }
