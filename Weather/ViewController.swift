@@ -44,7 +44,6 @@ class ViewController: UIViewController {
     lazy var citiesWeatherView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
@@ -94,13 +93,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.fetchFromCoreData()
-        
-        // Fetch my location's weather
-        self.fetchMyLocationWeather()
-        self.fetchLastSearchedCity()
-        
-        // Set up view with autolayout
         self.setupViews()
     }
     
