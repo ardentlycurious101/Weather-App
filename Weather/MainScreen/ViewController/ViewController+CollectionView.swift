@@ -12,7 +12,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case MainScreenSection.userLocation.rawValue:
-            return userCurrentCityWeatherData.count
+            return 1
         default:
             return cityHistory.count
         }
