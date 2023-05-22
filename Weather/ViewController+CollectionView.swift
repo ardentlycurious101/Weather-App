@@ -20,14 +20,28 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CityWeatherCell.identifier, for: indexPath) as! CityWeatherCell
+        cell.prepareForReuse()
         cell.setupView()
         
-        let city = cityHistory[indexPath.row]
-        
-        // Retrieve data from `NSManagedObject` instance in array
-        
-        if let name = city.value(forKey: "name") as? String {
-            cell.setMetadata(with: name)
+        switch indexPath.section {
+        case MainScreenSection.userLocation.rawValue:
+            cell.setMetadata(with: "My Location")
+            
+            cell.contentView.backgroundColor = .cyan
+            cell.setWeatherData(with: userCurrentCityWeatherData.first)
+            
+        default:
+            let city = cityHistory[indexPath.row]
+            
+            if let name = city.value(forKey: "name") as? String {
+                cell.setMetadata(with: name)
+            }
+            
+            if let weatherData = lastSearchedCityWeatherData.first {
+                cell.contentView.backgroundColor = .systemPink
+                cell.setWeatherData(with: weatherData)
+            }
+            
         }
         
 //        if let lat = city.value(forKey: "lat") as? Double, let lon = city.value(forKey: "lon") as? Double {
