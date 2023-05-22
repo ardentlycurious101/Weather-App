@@ -8,7 +8,7 @@
     - User location weather
     - Last searched city weather
 3. City Weather Details Modal
-    - Shows full weather details of a city
+    - Shows full weather details of a city, including downloaded icon
 
 
 ## Third-party Libraries Used 
