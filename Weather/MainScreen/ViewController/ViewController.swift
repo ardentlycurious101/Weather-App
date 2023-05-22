@@ -51,6 +51,8 @@ class ViewController: UIViewController {
     lazy var citiesWeatherView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        layout.sectionInset = .init(top: 10, left: .zero, bottom: 10, right: .zero)
+        
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
@@ -235,7 +237,9 @@ class ViewController: UIViewController {
             
             self.lastSearchedCityWeatherData = [cityWeather]
             
-            self.present(SelectedCityWeatherViewController(cityWeather: cityWeather, cityName: city.fullName), animated: true, completion: completion)
+            // Here, we're relying on a view controller to present another view controller. Ideally, we have a router to coordinate the presentation.
+            let viewModel = SelectedCityWeatherViewControllerViewModel(cityName: city.fullName, cityWeather: cityWeather)
+            self.present(SelectedCityWeatherViewController(viewModel: viewModel), animated: true, completion: completion)
         }
         
     }

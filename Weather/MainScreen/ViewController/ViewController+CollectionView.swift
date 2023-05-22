@@ -34,7 +34,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
             let city = cityHistory[indexPath.row]
             
             if let name = city.value(forKey: "name") as? String {
-                cell.setMetadata(with: name)
+                cell.setMetadata(with: "Last Searched City: " + name)
             }
             
             if let weatherData = lastSearchedCityWeatherData.first {
@@ -71,6 +71,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
             cityName = cityWeather.name ?? "Last Searched City"
         }
         
-        self.present(SelectedCityWeatherViewController(cityWeather: cityWeather, cityName: cityName), animated: true)
+        // Here, we're relying on a view controller to present another view controller. Ideally, we have a router to coordinate the presentation.
+        let viewModel = SelectedCityWeatherViewControllerViewModel(cityName: cityName, cityWeather: cityWeather)
+        self.present(SelectedCityWeatherViewController(viewModel: viewModel), animated: true)
     }
 }
