@@ -65,7 +65,7 @@ class SelectedCityWeatherViewController: UIViewController {
         guard let cityWeather = cityWeather else { return }
         
         if let mainTemp = cityWeather.main?.temp {
-            details.append((field: "Temperature", description:  String(mainTemp) + "°"))
+            details.append((field: "Temperature", description:  String(mainTemp) + "°F"))
         }
         
         if let weatherDescription = cityWeather.weather?.first?.description {
@@ -73,23 +73,23 @@ class SelectedCityWeatherViewController: UIViewController {
         }
         
         if let maxTemp = cityWeather.main?.tempMax {
-            details.append((field: "Maximum Temperature", description:  String(maxTemp) + "°"))
+            details.append((field: "Maximum Temperature", description:  String(maxTemp) + "°F"))
         }
         
         if let minTemp = cityWeather.main?.tempMin {
-            details.append((field: "Minimum Temperature", description:  String(minTemp) + "°"))
+            details.append((field: "Minimum Temperature", description:  String(minTemp) + "°F"))
         }
         
         if let sunrise = cityWeather.sys?.sunrise {
-            details.append((field: "Sunrise", description:  String(sunrise)))
+            details.append((field: "Sunrise", description:  String(sunrise))) // Ideally converted into local time
         }
         
         if let sunset = cityWeather.sys?.sunset {
-            details.append((field: "Sunset", description:  String(sunset)))
+            details.append((field: "Sunset", description:  String(sunset))) // Ideally converted into local time
         }
         
         if let pressure = cityWeather.main?.pressure {
-            details.append((field: "Minimum Temperature", description:  String(pressure)))
+            details.append((field: "Pressure", description:  String(pressure)))
         }
         
         if let feelsLikeTemp = cityWeather.main?.feelsLike {
