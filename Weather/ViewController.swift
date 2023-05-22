@@ -166,14 +166,22 @@ class ViewController: UIViewController {
     func fetchLastSearchedCity() {
         // TODO: Check Core Data for city
         
+    
+    func retrieveLastSearchedCityFromCoreData() {
+        // Retrieve last searched city from CoreData
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+
+        let managedContext = appDelegate.persistentContainer.viewContext
+
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "City")
         
-        // If there's city, fetch
-        if let coord = lastSearchedCity.first?.coord,
-           let lat = coord.lat,
-           let lon = coord.lon {
-            self.fetch(coordinates: (lat, lon)) { lastSearchedCity in
-                
+        do {
+            cityHistory = try managedContext.fetch(fetchRequest)
+            DispatchQueue.main.async {
+                self.citiesWeatherView.reloadData()
             }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
         }
         
     }
@@ -230,26 +238,5 @@ class ViewController: UIViewController {
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
-    
-    func fetchFromCoreData() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-
-        let managedContext = appDelegate.persistentContainer.viewContext
-
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "City")
         
-        do {
-            cityHistory = try managedContext.fetch(fetchRequest)
-            citiesWeatherView.reloadData()
-            
-            print("Successfully fetched cities.")
-            if let name = cityHistory.first?.value(forKey: "name") as? String {
-                print("First city name: \(name)")
-
-            }
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-    }
-    
 }
