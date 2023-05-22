@@ -31,17 +31,16 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
             cell.setWeatherData(with: userCurrentCityWeatherData.first)
             
         default:
-            let city = cityHistory[indexPath.row]
-            
-            if let name = city.value(forKey: "name") as? String {
-                cell.setMetadata(with: "Last Searched City: " + name)
+            if let city = cityHistory.first {
+                if let name = city.value(forKey: "name") as? String {
+                    cell.setMetadata(with: "Last Searched City: " + name)
+                }
+                
+                if let weatherData = lastSearchedCityWeatherData.first {
+                    cell.contentView.backgroundColor = .systemPink
+                    cell.setWeatherData(with: weatherData)
+                }
             }
-            
-            if let weatherData = lastSearchedCityWeatherData.first {
-                cell.contentView.backgroundColor = .systemPink
-                cell.setWeatherData(with: weatherData)
-            }
-            
         }
         
         return cell
@@ -59,20 +58,27 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cityWeather: CityWeather
-        let cityName: String
+        var cityWeather: CityWeather?
+        var cityName: String = ""
         
         switch indexPath.section {
         case MainScreenSection.userLocation.rawValue:
-            cityWeather = userCurrentCityWeatherData[indexPath.item]
-            cityName = cityWeather.name ?? "My Location"
+            if let weatherData = userCurrentCityWeatherData.first {
+                cityWeather = weatherData
+            }
+            cityName = cityWeather?.name ?? "My Location"
         default:
-            cityWeather = lastSearchedCityWeatherData[indexPath.item]
-            cityName = cityWeather.name ?? "Last Searched City"
+            if let weatherData = lastSearchedCityWeatherData.first {
+                cityWeather = weatherData
+            }
+            cityName = cityWeather?.name ?? "Last Searched City"
         }
         
         // Here, we're relying on a view controller to present another view controller. Ideally, we have a router to coordinate the presentation.
-        let viewModel = SelectedCityWeatherViewControllerViewModel(cityName: cityName, cityWeather: cityWeather)
-        self.present(SelectedCityWeatherViewController(viewModel: viewModel), animated: true)
+        
+        if let cityWeather = cityWeather {
+            let viewModel = SelectedCityWeatherViewControllerViewModel(cityName: cityName, cityWeather: cityWeather)
+            self.present(SelectedCityWeatherViewController(viewModel: viewModel), animated: true)
+        }
     }
 }

@@ -28,7 +28,6 @@
 		EA9C8BD92A181F58009D2730 /* DirectGeocodingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C8BD82A181F58009D2730 /* DirectGeocodingInteractor.swift */; };
 		EA9C8BE02A18415B009D2730 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C8BDF2A18415B009D2730 /* Debouncer.swift */; };
 		EA9C8BE22A18455F009D2730 /* SelectedCityWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C8BE12A18455F009D2730 /* SelectedCityWeatherViewController.swift */; };
-		EA9C8BE42A1846A6009D2730 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C8BE32A1846A6009D2730 /* CustomError.swift */; };
 		EA9C8BE72A18575A009D2730 /* SelectedCityWeatherViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C8BE62A18575A009D2730 /* SelectedCityWeatherViewController+TableView.swift */; };
 		EA9C8BEA2A185784009D2730 /* SelectedCityWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C8BE92A185784009D2730 /* SelectedCityWeatherCell.swift */; };
 		EA9C8C382A187136009D2730 /* Weather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA9C8C362A187136009D2730 /* Weather.xcdatamodeld */; };
@@ -78,7 +77,6 @@
 		EA9C8BD82A181F58009D2730 /* DirectGeocodingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectGeocodingInteractor.swift; sourceTree = "<group>"; };
 		EA9C8BDF2A18415B009D2730 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		EA9C8BE12A18455F009D2730 /* SelectedCityWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCityWeatherViewController.swift; sourceTree = "<group>"; };
-		EA9C8BE32A1846A6009D2730 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		EA9C8BE62A18575A009D2730 /* SelectedCityWeatherViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelectedCityWeatherViewController+TableView.swift"; sourceTree = "<group>"; };
 		EA9C8BE92A185784009D2730 /* SelectedCityWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCityWeatherCell.swift; sourceTree = "<group>"; };
 		EA9C8C372A187136009D2730 /* Weather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Weather.xcdatamodel; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 			children = (
 				EA1225E92A1802BB003EF81B /* CityWeather.swift */,
 				EA9C8BD12A181E04009D2730 /* SearchResult.swift */,
-				EA9C8BE32A1846A6009D2730 /* CustomError.swift */,
 				EAF6497B2A1B14E700EEF495 /* MainScreenSection.swift */,
 			);
 			path = "Data Model";
@@ -400,7 +397,6 @@
 				EA9C8BD22A181E04009D2730 /* SearchResult.swift in Sources */,
 				EA1225EC2A180B0C003EF81B /* FetchCityWeatherInteractor.swift in Sources */,
 				EA9C8BE72A18575A009D2730 /* SelectedCityWeatherViewController+TableView.swift in Sources */,
-				EA9C8BE42A1846A6009D2730 /* CustomError.swift in Sources */,
 				EA9C8BD52A181E90009D2730 /* ViewController+TableView.swift in Sources */,
 				EA9C8C382A187136009D2730 /* Weather.xcdatamodeld in Sources */,
 				EA1225B42A17E8EF003EF81B /* ViewController.swift in Sources */,

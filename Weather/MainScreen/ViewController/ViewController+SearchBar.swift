@@ -37,8 +37,10 @@ extension ViewController: UISearchBarDelegate {
             return
         }
         
-        self.fetchSearchInputInteractor.perform(for: searchText) { result in
-            guard let result = result else {
+        self.fetchSearchInputInteractor.perform(for: searchText) { result, error  in
+            guard let result = result, error == nil else {
+                // Show alert for failure
+                self.displayFailureAlert()
                 return
             }
             

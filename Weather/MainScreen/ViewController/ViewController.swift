@@ -220,18 +220,28 @@ class ViewController: UIViewController {
         let latStr = String(location.lat)
         let lonStr = String(location.lon)
                       
-        self.fetchWeatherInteractor.perform(for: (latStr, lonStr), completion: completion)
+        self.fetchWeatherInteractor.perform(for: (latStr, lonStr)) { cityWeather, error in
+            guard let cityWeather = cityWeather, error == nil else {
+                // Show alert for failure
+                self.displayFailureAlert()
+                return
+            }
+            
+            completion(cityWeather)
+        }
     }
     
     func showDataInModal(for city: SearchResultElement, completion: @escaping () -> Void) {
         guard let coordinates = city.coordinates else {
-            // TODO: Show error
+            // Show alert for failure
+            self.displayFailureAlert()
             return
         }
         
         self.fetch(coordinates: coordinates) { cityWeather in
             guard let cityWeather = cityWeather else {
-                // TODO: Show error
+                // Show alert for failure
+                self.displayFailureAlert()
                 return
             }
             
@@ -271,6 +281,18 @@ class ViewController: UIViewController {
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
+    }
+    
+    func displayFailureAlert() {
+        // Ideally we create a custom enum `CustomError: Error` where we can specify all the different error types in the app.
+        // We then pass this along based on the different error sources and reasons. This way we can make it clearer to the end user.
+
+        let alertAction = UIAlertAction(title: "OK", style: .cancel)
+        let alert = UIAlertController(title: "Request Failed", message: "We're sorry. Please make sure your device is connected to the internet or try again later.", preferredStyle: .alert)
+        alert.addAction(alertAction)
+        alert.overrideUserInterfaceStyle = .dark
+
+        self.present(alert, animated: true)
     }
         
 }

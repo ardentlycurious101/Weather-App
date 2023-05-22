@@ -10,14 +10,14 @@ import Foundation
 class FetchCityWeatherInteractor {
     let networking = Networking<WeatherAPI>()
 
-    func perform(for location: (lat: String, lon: String), completion: @escaping (_ cityWeather: CityWeather?) -> Void) {
-        self.networking.fetch(api: .fetchWeather(location: location)) { results, error in
-            guard error == nil else {
-                print(error!)
+    func perform(for location: (lat: String, lon: String), completion: @escaping (_ cityWeather: CityWeather?, _ error: Error?) -> Void) {
+        self.networking.fetch(api: .fetchWeather(location: location)) { (results: CityWeather?, error) in
+            guard let results = results, error == nil else {
+                completion(nil, error)
                 return
             }
             
-            completion(results ?? nil)
+            completion(results, nil)
         }
     }
 }
