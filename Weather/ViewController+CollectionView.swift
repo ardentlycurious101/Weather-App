@@ -10,7 +10,12 @@ import UIKit
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cityHistory.count
+        switch section {
+        case MainScreenSection.userLocation.rawValue:
+            return userCurrentCityWeatherData.count
+        default:
+            return cityHistory.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
