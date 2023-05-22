@@ -35,6 +35,7 @@
 		EA9C8BE72A18575A009D2730 /* SelectedCityWeatherViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C8BE62A18575A009D2730 /* SelectedCityWeatherViewController+TableView.swift */; };
 		EA9C8BEA2A185784009D2730 /* SelectedCityWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C8BE92A185784009D2730 /* SelectedCityWeatherCell.swift */; };
 		EA9C8C382A187136009D2730 /* Weather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA9C8C362A187136009D2730 /* Weather.xcdatamodeld */; };
+		EAF6497C2A1B14E700EEF495 /* MainScreenSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6497B2A1B14E700EEF495 /* MainScreenSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		EA9C8BE62A18575A009D2730 /* SelectedCityWeatherViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelectedCityWeatherViewController+TableView.swift"; sourceTree = "<group>"; };
 		EA9C8BE92A185784009D2730 /* SelectedCityWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCityWeatherCell.swift; sourceTree = "<group>"; };
 		EA9C8C372A187136009D2730 /* Weather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Weather.xcdatamodel; sourceTree = "<group>"; };
+		EAF6497B2A1B14E700EEF495 /* MainScreenSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				EA1225E92A1802BB003EF81B /* CityWeather.swift */,
 				EA9C8BD12A181E04009D2730 /* SearchResult.swift */,
 				EA9C8BE32A1846A6009D2730 /* CustomError.swift */,
+				EAF6497B2A1B14E700EEF495 /* MainScreenSection.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				EA88C06F2A1A97B40037FD4C /* LocationDataManager.swift in Sources */,
 				EA1225E82A180235003EF81B /* WeatherAPI.swift in Sources */,
 				EA1225EA2A1802BB003EF81B /* CityWeather.swift in Sources */,
+				EAF6497C2A1B14E700EEF495 /* MainScreenSection.swift in Sources */,
 				EA1225E62A17FBE4003EF81B /* WeatherNetworking.swift in Sources */,
 				EA1225B22A17E8EF003EF81B /* SceneDelegate.swift in Sources */,
 				EA1225EE2A1812AD003EF81B /* ViewController+CollectionView.swift in Sources */,
