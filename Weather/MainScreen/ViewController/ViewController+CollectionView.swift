@@ -80,7 +80,12 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
             if let weatherData = lastSearchedCityWeatherData.first {
                 cityWeather = weatherData
             }
-            cityName = cityWeather?.name ?? "Last Searched City"
+            
+            if let city = cityHistory.first {
+                if let name = city.value(forKey: "name") as? String {
+                    cityName = name
+                }
+            }
         }
         
         // Here, we're relying on a view controller to present another view controller. Ideally, we have a router to coordinate the presentation.

@@ -68,7 +68,7 @@ class SelectedCityWeatherViewController: UIViewController {
         // Implementation below doesn't use all data, but most.
         
         details.append((field: "Name", description: viewModel.cityName))
-        
+
         guard let cityWeather = cityWeather else { return }
         
         // In this implementation, we use imperial - for ideal user experience, should let user select the measurement unit

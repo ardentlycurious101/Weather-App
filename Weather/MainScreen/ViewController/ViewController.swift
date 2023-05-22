@@ -258,6 +258,7 @@ class ViewController: UIViewController {
         
         let city = NSManagedObject(entity: entity, insertInto: managedContext)
         
+        print("this is saved name: \(name)")
         city.setValue(name, forKey: "name")
         city.setValue(coord.lat, forKey: "lat")
         city.setValue(coord.lon, forKey: "lon")
