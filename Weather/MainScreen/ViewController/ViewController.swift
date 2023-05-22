@@ -97,7 +97,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.coreLocationManager = LocationDataManager(locationUpdated: self.userLocationUpdated)
+        self.coreLocationManager = LocationDataManager(locationUpdated: self.userLocationUpdated, permissionUpdated: locationPermissionUpdate)
         
         self.setupViews()
     }
@@ -171,6 +171,12 @@ class ViewController: UIViewController {
                     }
                 }
             }
+        }
+    }
+    
+    func locationPermissionUpdate() {
+        DispatchQueue.main.async {
+            self.citiesWeatherView.reloadData()
         }
     }
     

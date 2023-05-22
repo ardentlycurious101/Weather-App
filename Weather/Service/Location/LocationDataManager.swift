@@ -14,11 +14,14 @@ class LocationDataManager: NSObject, CLLocationManagerDelegate, ObservableObject
     
     // Callback closure to handle location updates
     var locationUpdated: ((_ userCoordinates: (lat: Double, lon: Double)?) -> Void)?
-    
-    init(locationUpdated: @escaping (_ userCoordinates: (lat: Double, lon: Double)?) -> Void) {
+    var permissionUpdated: (() -> Void)?
+
+    init(locationUpdated: @escaping (_ userCoordinates: (lat: Double, lon: Double)?) -> Void,
+         permissionUpdated: @escaping () -> Void) {
         super.init()
         self.locationManager.delegate = self
         self.locationUpdated = locationUpdated
+        self.permissionUpdated = permissionUpdated
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -41,6 +44,7 @@ class LocationDataManager: NSObject, CLLocationManagerDelegate, ObservableObject
     }
     
     func enableLocationFeatures() {
+        permissionUpdated?()
         locationManager.requestLocation()
     }
     
