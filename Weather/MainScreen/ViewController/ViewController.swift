@@ -35,11 +35,6 @@ class ViewController: UIViewController {
         }
     }
     
-    let mockData = [
-        CityWeather(coord: Coord(lon: 122.2711, lat: 37.5585), weather: [Weather(id: 804, main: "Clouds", description: "overcast clouds", icon: "04n")], base: "stations", main: Main(temp: 289.82, feelsLike: 289.61, tempMin: 289.82, tempMax: 289.82, pressure: 1008, humidity: 79, seaLevel: 1008, grndLevel: 1008), visibility: 10000, wind: Wind(speed: 7.74, deg: 205, gust: 13.36), rain: nil, clouds: Clouds(all: 100), dt: 1684525829, sys: Sys(type: nil, id: nil, country: "CN", sunrise: 1684528707, sunset: 1684580198), timezone: 28800, id: 1791673, name: "Weihai", cod: 200),
-        CityWeather(coord: Coord(lon: 122.2711, lat: 37.5585), weather: [Weather(id: 804, main: "Clouds", description: "overcast clouds", icon: "04n")], base: "stations", main: Main(temp: 289.82, feelsLike: 289.61, tempMin: 289.82, tempMax: 289.82, pressure: 1008, humidity: 79, seaLevel: 1008, grndLevel: 1008), visibility: 10000, wind: Wind(speed: 7.74, deg: 205, gust: 13.36), rain: nil, clouds: Clouds(all: 100), dt: 1684525829, sys: Sys(type: nil, id: nil, country: "CN", sunrise: 1684528707, sunset: 1684580198), timezone: 28800, id: 1791673, name: "Weihai", cod: 200)
-    ]
-    
     // View
     lazy var searchBar: UISearchBar = {
         let view = UISearchBar(frame: .zero)
