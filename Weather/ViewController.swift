@@ -20,10 +20,13 @@ class ViewController: UIViewController {
     let fetchSearchInputInteractor = DirectGeocodingInteractor()
     
     // Data
-    var userCurrentCity: [CityWeather] = []
-    var lastSearchedCity: [CityWeather] = []
+    // Storage
+    let numberOfSections: Int = 2
+    var userCurrentCityWeatherData: [CityWeather] = []
+    var lastSearchedCityWeatherData: [CityWeather] = []
     
-    var cityHistory: [NSManagedObject] = []
+    // Entity contains city name, lat, and lon
+    var cityHistory: [NSManagedObject] = [] // array for extensibility. In the future case if we want to store multiple last searched cities.
     
     var searchInput: String = ""
     
