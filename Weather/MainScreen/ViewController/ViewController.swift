@@ -122,8 +122,9 @@ class ViewController: UIViewController {
     // Methods
     
     func setupViews() {
+        self.overrideUserInterfaceStyle = .dark   
         self.view.backgroundColor = .black
-
+        
         self.view.addSubview(self.searchBar)
         self.view.addSubview(self.citiesWeatherView)
         self.view.addSubview(self.searchModeDimmingView)
