@@ -19,7 +19,6 @@ class ViewController: UIViewController {
     let fetchWeatherInteractor = FetchCityWeatherInteractor()
     let fetchSearchInputInteractor = DirectGeocodingInteractor()
     
-    // Data
     // Storage
     let numberOfSections: Int = 2
     var userCurrentCityWeatherData: [CityWeather] = []
