@@ -123,7 +123,7 @@ class CityWeatherCell: UICollectionViewCell {
         }
         
         if let mainTemp = cityWeather.main?.temp {
-            mainTempView.text = "Temperature: " + String(mainTemp) + "°F"
+            mainTempView.text = "Current Temperature: " + String(mainTemp) + "°F"
         }
         
         if let maxTemp = cityWeather.main?.tempMax {

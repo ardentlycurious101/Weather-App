@@ -74,7 +74,7 @@ class SelectedCityWeatherViewController: UIViewController {
         // In this implementation, we use imperial - for ideal user experience, should let user select the measurement unit
 
         if let mainTemp = cityWeather.main?.temp {
-            details.append((field: "Temperature", description:  String(mainTemp) + "°F"))
+            details.append((field: "Current Temperature", description:  String(mainTemp) + "°F"))
         }
         
         if let weatherDescription = cityWeather.weather?.first?.description {
@@ -82,43 +82,41 @@ class SelectedCityWeatherViewController: UIViewController {
         }
         
         if let maxTemp = cityWeather.main?.tempMax {
-            details.append((field: "Maximum Temperature", description:  String(maxTemp) + "°F"))
+            details.append((field: "Maximum Temperature", description:  String(maxTemp) + " °F"))
         }
         
         if let minTemp = cityWeather.main?.tempMin {
-            details.append((field: "Minimum Temperature", description:  String(minTemp) + "°F"))
+            details.append((field: "Minimum Temperature", description:  String(minTemp) + " °F"))
         }
         
-        if let sunrise = cityWeather.sys?.sunrise {
-            details.append((field: "Sunrise", description:  String(sunrise))) // Ideally converted into local time
+        if let sunrise = cityWeather.sys?.sunrise, let secondsFromGMT = cityWeather.timezone {
+            let sunriseInHourMin = self.convertTimestampIntoLocalTime(unixTimeInterval: Double(sunrise), secondsFromGMT: secondsFromGMT)
+            details.append((field: "Sunrise", description:  sunriseInHourMin))
         }
         
-        if let sunset = cityWeather.sys?.sunset {
-            details.append((field: "Sunset", description:  String(sunset))) // Ideally converted into local time
+        if let sunset = cityWeather.sys?.sunset, let secondsFromGMT = cityWeather.timezone {
+            let sunsetInHourMin = self.convertTimestampIntoLocalTime(unixTimeInterval: Double(sunset), secondsFromGMT: secondsFromGMT)
+            details.append((field: "Sunset", description:  sunsetInHourMin))
         }
         
         if let pressure = cityWeather.main?.pressure {
-            details.append((field: "Pressure", description:  String(pressure)))
+            details.append((field: "Pressure", description:  String(pressure) + " hPa"))
         }
         
         if let feelsLikeTemp = cityWeather.main?.feelsLike {
-            details.append((field: "Feels Like", description:  String(feelsLikeTemp)))
+            details.append((field: "Feels Like", description:  String(feelsLikeTemp) + " °F"))
         }
 
         if let humidity = cityWeather.main?.humidity {
-            details.append((field: "Humidity", description:  String(humidity)))
+            details.append((field: "Humidity", description:  String(humidity)  + " %"))
         }
         
         if let visibility = cityWeather.visibility {
-            details.append((field: "Visibility", description:  String(visibility)))
+            details.append((field: "Visibility", description:  String(visibility) + " m"))
         }
         
         if let windSpeed = cityWeather.wind?.speed {
-            details.append((field: "Wind Speed", description:  String(windSpeed)))
-        }
-
-        if let pressure = cityWeather.main?.pressure {
-            details.append((field: "Pressure", description:  String(pressure)))
+            details.append((field: "Wind Speed", description:  String(windSpeed) + " miles/hour"))
         }
         
         cityWeatherDetailsTable.reloadData()
@@ -163,6 +161,17 @@ class SelectedCityWeatherViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    // Ideally we make this into a separate class so that the date formatter is reusable.
+    func convertTimestampIntoLocalTime(unixTimeInterval: Double, secondsFromGMT: Int) -> String {
+        let date = Date(timeIntervalSince1970: unixTimeInterval)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: secondsFromGMT)
+        dateFormatter.dateFormat = "h:mm a"
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
+        return dateFormatter.string(from: date)
     }
     
 }
