@@ -213,7 +213,7 @@ class ViewController: UIViewController {
         
     }
     
-    func saveCity(name: String, coord: (lat: Double, lon: Double)) {
+    func saveLastSearchedCity(name: String, coord: (lat: Double, lon: Double)) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
         let managedContext = appDelegate.persistentContainer.viewContext
