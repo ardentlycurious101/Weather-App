@@ -56,4 +56,20 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         let width = view.frame.width - view.safeAreaInsets.left - view.safeAreaInsets.right - horizontalPadding
         return CGSize(width: width, height: 160)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cityWeather: CityWeather
+        let cityName: String
+        
+        switch indexPath.section {
+        case MainScreenSection.userLocation.rawValue:
+            cityWeather = userCurrentCityWeatherData[indexPath.item]
+            cityName = cityWeather.name ?? "My Location"
+        default:
+            cityWeather = lastSearchedCityWeatherData[indexPath.item]
+            cityName = cityWeather.name ?? "Last Searched City"
+        }
+        
+        self.present(SelectedCityWeatherViewController(cityWeather: cityWeather, cityName: cityName), animated: true)
+    }
 }
