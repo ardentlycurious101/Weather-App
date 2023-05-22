@@ -25,6 +25,8 @@ extension ViewController: UISearchBarDelegate {
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        
+        // Not implemented: For completion, we should also implement a function to cancel any remaining in-flight geocoding requests.
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
