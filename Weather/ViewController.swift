@@ -194,7 +194,7 @@ class ViewController: UIViewController {
         self.fetchWeatherInteractor.perform(for: (latStr, lonStr), completion: completion)
     }
     
-    func showData(for city: SearchResultElement) {
+    func showDataInModal(for city: SearchResultElement, completion: @escaping () -> Void) {
         guard let coordinates = city.coordinates else {
             // TODO: Show error
             return
@@ -205,7 +205,10 @@ class ViewController: UIViewController {
                 // TODO: Show error
                 return
             }
-            self.present(SelectedCityWeatherViewController(cityWeather: cityWeather, cityName: city.fullName), animated: true)
+            
+            self.lastSearchedCityWeatherData = [cityWeather]
+            
+            self.present(SelectedCityWeatherViewController(cityWeather: cityWeather, cityName: city.fullName), animated: true, completion: completion)
         }
         
     }
