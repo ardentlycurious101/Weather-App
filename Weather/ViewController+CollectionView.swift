@@ -52,6 +52,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // Ideally this should use intrinsic content size of the cell based on the content to ensure dynamic size.
         let horizontalPadding: CGFloat = 20
         let width = view.frame.width - view.safeAreaInsets.left - view.safeAreaInsets.right - horizontalPadding
         return CGSize(width: width, height: 160)
