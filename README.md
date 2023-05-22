@@ -12,6 +12,6 @@
 
 
 ## Third-party Libraries Used 
-Note: downloaded through Swift Package Manager
+Using Swift Package Manager
 - Moya- networking library built on top of Alamofire
 - SDWebImage - image caching
