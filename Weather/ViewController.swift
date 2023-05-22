@@ -163,9 +163,22 @@ class ViewController: UIViewController {
         }
     }
     
-    func fetchLastSearchedCity() {
-        // TODO: Check Core Data for city
+    func fetchLastSearchedCityWeatherData() {
+        self.retrieveLastSearchedCityFromCoreData()
         
+        // If there's city, fetch weather data
+        if let lat = cityHistory.first?.value(forKey: "lat") as? Double,
+           let lon = cityHistory.first?.value(forKey: "lon") as? Double {
+            self.fetch(coordinates: (lat, lon)) { weatherData in
+                if let weatherData = weatherData {
+                    self.lastSearchedCityWeatherData = [weatherData]
+                    DispatchQueue.main.async {
+                        self.citiesWeatherView.reloadData()
+                    }
+                }
+            }
+        }
+    }
     
     func retrieveLastSearchedCityFromCoreData() {
         // Retrieve last searched city from CoreData
