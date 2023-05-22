@@ -114,6 +114,13 @@ class ViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Fetch `last searched city` coordinates from CoreData. Then make a request to get that city's current weather data
+        self.fetchLastSearchedCityWeatherData()
+    }
+    
     // Methods
     
     func setupViews() {
