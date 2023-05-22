@@ -153,13 +153,6 @@ class ViewController: UIViewController {
         ])
     }
     
-    func fetchMyLocationWeather() {
-        // TODO: Request location with Core Location
-        
-        
-        // Update collection view section 0
-        self.fetchWeatherInteractor.perform(for: ("37.5585", "122.2711")) { cityWeather in
-            
         }
     }
     
